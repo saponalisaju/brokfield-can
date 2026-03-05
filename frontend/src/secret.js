@@ -1,2 +1,2 @@
-const apiUrl = "http://localhost:4005";
+const apiUrl = "https://brokfield-can.onrender.com";
 export default apiUrl;
