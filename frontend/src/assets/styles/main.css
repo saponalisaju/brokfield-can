@@ -97,10 +97,14 @@ hr {
   margin: 0;
 }
 
+.add_user{
+  width: 100%;
+}
+
 .user_manage,
 .user_profile,
-.user_application,
-.add_user {
+.user_application
+ {
   width: 68rem;
   margin-top: 5rem;
   padding: 0.5rem 1.5rem 0 0;
@@ -228,20 +232,42 @@ hr {
   color: #000;
 }
 
+.visa_form{
+  color: rgb(7, 177, 98);
+}
+
+.visa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.visa_form {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.visa-logo {
+  max-width: 120px;
+  height: auto;
+}
+
 /* paginated list css end */
 
 @media (max-width: 1400px) {
   .user_manage,
-  .user_profile,
-  .add_user {
+  .user_profile
+   {
     width: 68rem;
   }
 }
 
 @media (max-width: 1200px) {
   .user_manage,
-  .user_profile,
-  .add_user {
+  .user_profile
+   {
     width: 57rem;
   }
 }
@@ -263,16 +289,16 @@ hr {
 
   /* view one end */
   .user_manage,
-  .user_profile,
-  .add_user {
+  .user_profile
+   {
     width: 43rem;
   }
 }
 
 @media (max-width: 810px) {
   .user_manage,
-  .user_profile,
-  .add_user {
+  .user_profile
+   {
     width: 32rem;
     margin-left: 16rem;
     font-size: 13px;
@@ -300,8 +326,15 @@ hr {
 }
 
 @media (max-width: 768px) {
-  .user_manage,
-  .add_user {
+  .visa_form {
+      font-size: 1.6rem;
+    }
+  
+    .visa-logo {
+      max-width: 90px;
+    }
+  .user_manage
+  {
     width: 32rem;
   }
   .user_manage_hr {
@@ -372,8 +405,8 @@ hr {
     width: 18rem;
   }
 
-  .user_manage,
-  .add_user {
+  .user_manage
+   {
     width: 21rem;
     padding-top: 1rem;
   }
@@ -395,24 +428,12 @@ hr {
     width: 18rem;
   }
 
-  #identification {
-    width: 17.2rem;
-  }
 
   #publish {
     width: 17rem;
   }
 
-  .name-details,
-  .identification,
-  .gender_date,
-  .city_birth,
-  .company_duration,
-  .job_title {
-    flex-direction: column;
-  }
-
-  .add_user input,
+  input,
   .user_manage_hr,
   #sex,
   #jobTitle {
@@ -421,6 +442,15 @@ hr {
 }
 
 @media (max-width: 480px) {
+  
+  
+    .visa_form {
+      font-size: 1.2rem;
+    }
+  
+    .visa-logo {
+      max-width: 80px;
+    }
   .stamp_logo {
     width: 120px;
     margin: 1rem 0 0 -8rem;
@@ -434,6 +464,26 @@ hr {
   .surname_sex {
     width: 70%;
   }
+
+  .particulars{
+    margin: 0;
+    padding: 0;
+  }
+
+  select>option{
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+  }
+
+  form-control{
+    font-size: 12px;
+  }
+
+     input::placeholder,
+     textarea::placeholder {
+       font-size: 12px;
+     }
 
   /* view one end */
   .view_one_head {
@@ -460,22 +510,17 @@ hr {
   #publish {
     width: 12rem;
   }
-  #identification {
-    width: 10rem;
-  }
+  
   .application_img {
     width: 160px;
     height: 160px;
   }
-  .visa_form,
-  .particulars {
-    width: 12rem;
-  }
+  
   #sex {
     width: 10rem;
   }
-  .user_manage,
-  .add_user {
+  .user_manage
+   {
     width: 14rem;
   }
   .edit_delete {
@@ -485,6 +530,10 @@ hr {
 }
 
 @media (max-width: 412px) {
+
+  .add_user{
+    font-size: 11px;
+  }
   .email_user {
     font-size: 12px;
   }
@@ -492,9 +541,6 @@ hr {
   #status,
   #publish,
   .user_manage_hr,
-  #sex {
-    width: 10rem;
-  }
   .user_manage_hr {
     width: 13rem;
   }
@@ -517,8 +563,8 @@ hr {
   .user_manage_app {
     text-align: center;
   }
-  .user_manage,
-  .add_user {
+  .user_manage
+   {
     width: 12rem;
     padding-top: 0;
     margin-left: 12rem;
@@ -529,7 +575,7 @@ hr {
   }
   #sex,
   #jobTitle {
-    width: 11rem;
+    width: 9.3rem;
   }
 }
 @media (max-width: 360px) {
@@ -562,20 +608,8 @@ hr {
     margin-left: 10.4rem;
   }
 
-  .add_user {
-    font-size: 10px;
-    padding-top: 1rem;
-    margin-left: 10.6rem;
-  }
 
-  .visa_form,
-  .particulars {
-    width: 11rem;
-  }
-
-  .add_user input,
-  .user_manage_hr,
-  #jobTitle {
+  .user_manage_hr {
     width: 10rem;
   }
   .search-bar {

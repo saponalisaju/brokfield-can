@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Common from "../../layouts/Common";
+import enq from "../../assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/main.css";
 import api from "./api";
@@ -323,32 +323,32 @@ const AddUserApplication = () => {
 
   return (
     <>
-      <div id="navbar-example2">
-        <Common />
-      </div>
       <main
         data-bs-spy="scroll"
         data-bs-target="#navbar-example2"
         data-bs-offset="0"
-        className="scrollspy-example add_user me-5"
+        className="scrollspy-example add_user p-4"
         tabIndex="0"
         style={{ overflowY: "scroll", maxHeight: "100vh" }}
       >
-        <h2 className="visa_form">Visa Application Form</h2>
+        <div className="visa-header">
+          <h2 className="visa_form">Visa Application Form</h2>
+          <img src={enq} alt="logo" className="visa-logo" />
+        </div>
         <p className="particulars">Personal Particulars</p>
         <hr className="user_application_hr " />
         <form
           onSubmit={handleSubmit}
-          className="me-5 absolute "
+          className="absolute "
           encType="multipart/form-data"
         >
           <div className="name-details d-flex">
             <div className="surname w-50 p-1">
-              <label className="form-label" htmlFor="surname">
+              <label className="" htmlFor="surname">
                 Surname*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control "
                 type="text"
                 name="surname"
                 required
@@ -357,11 +357,11 @@ const AddUserApplication = () => {
               />
             </div>
             <div className="w-50 p-1">
-              <label className="form-label" htmlFor="givenN">
+              <label className="" htmlFor="givenN">
                 Given Name*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control"
                 type="text"
                 name="givenN"
                 required
@@ -371,11 +371,11 @@ const AddUserApplication = () => {
             </div>
           </div>
           <div>
-            <label className="form-label" htmlFor="email">
+            <label className="" htmlFor="email">
               Email*
             </label>
             <input
-              className="form-control p-2 mb-3"
+              className="form-control"
               type="email"
               name="email"
               required
@@ -385,11 +385,11 @@ const AddUserApplication = () => {
           </div>
           <div className="identification d-flex">
             <div className="phone-no w-50 p-1">
-              <label className="form-label" htmlFor="phone">
+              <label className="" htmlFor="phone">
                 Phone*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control"
                 type="text"
                 name="phone"
                 required
@@ -398,11 +398,11 @@ const AddUserApplication = () => {
               />
             </div>
             <div className="id-number w-50 p-1">
-              <label className="form-label" htmlFor="nationalId">
+              <label className="" htmlFor="nationalId">
                 National ID*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control"
                 type="text"
                 name="nationalId"
                 required
@@ -413,12 +413,12 @@ const AddUserApplication = () => {
           </div>
           <div className="gender_date d-flex">
             <div className="gender w-50 p-1">
-              <label className="form-label" htmlFor="sex">
+              <label className="" htmlFor="sex">
                 Sex*
               </label>
               <select
                 id="sex"
-                className="form-select p-2 mb-3"
+                className="form-select "
                 name="sex"
                 value={formData.sex}
                 required
@@ -432,11 +432,11 @@ const AddUserApplication = () => {
               </select>
             </div>
             <div className="dob w-50 p-1">
-              <label className="form-label" htmlFor="dob">
+              <label className="" htmlFor="dob">
                 Date of Birth*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control"
                 type="date"
                 name="dob"
                 required
@@ -447,11 +447,11 @@ const AddUserApplication = () => {
           </div>
           <div className="city_birth d-flex">
             <div className="w-50 p-1">
-              <label className="form-label" htmlFor="birthCity">
+              <label className="" htmlFor="birthCity">
                 Place of Birth Town/City*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control "
                 type="text"
                 name="birthCity"
                 required
@@ -460,11 +460,11 @@ const AddUserApplication = () => {
               />
             </div>
             <div className="id-number w-50 p-1">
-              <label className="form-label" htmlFor="currentN">
+              <label className="" htmlFor="currentN">
                 Current Nationality*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control "
                 type="text"
                 name="currentN"
                 required
@@ -476,13 +476,13 @@ const AddUserApplication = () => {
           </div>
 
           <div className="message">
-            <label className="form-label" htmlFor="identification">
+            <label className="" htmlFor="identification">
               Identification Marks*
             </label>
             <textarea
               id="identification"
               name="identification"
-              className="form-control mb-3"
+              className="form-control"
               required
               placeholder="Enter identification marks" // <-- placeholder ব্যবহার
               value={formData.identification}
@@ -491,11 +491,11 @@ const AddUserApplication = () => {
           </div>
           <div className="company_duration d-flex">
             <div className="phone-no w-50 p-1">
-              <label className="form-label" htmlFor="company">
+              <label className="" htmlFor="company">
                 Company Name*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control "
                 type="text"
                 name="company"
                 required
@@ -504,11 +504,11 @@ const AddUserApplication = () => {
               />
             </div>
             <div className="id-number w-50 p-1">
-              <label className="form-label" htmlFor="dutyDuration">
+              <label className="" htmlFor="dutyDuration">
                 Duty Duration*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control "
                 type="text"
                 name="dutyDuration"
                 required
@@ -519,13 +519,13 @@ const AddUserApplication = () => {
           </div>
           <div className="d-flex job_title">
             <div className="w-50 p-1">
-              <label className="form-label" htmlFor="jobTitle">
+              <label className="" htmlFor="jobTitle">
                 Job Title*
               </label>
               <select
                 id="jobTitle"
                 name="jobTitle"
-                className="form-select p-2 mb-3"
+                className="form-select "
                 value={formData.jobTitle}
                 onChange={handleJobChange}
                 required
@@ -549,7 +549,7 @@ const AddUserApplication = () => {
                 Salary*
               </label>
               <input
-                className="form-control p-2 mb-3"
+                className="form-control "
                 type="text"
                 name="salary"
                 value={formData.salary}
@@ -558,11 +558,11 @@ const AddUserApplication = () => {
             </div>
           </div>
           <div className="edit-file">
-            <label className="form-label" htmlFor="image">
+            <label className="" htmlFor="image">
               Image
             </label>
             <input
-              className="form-control p-2 mb-3"
+              className="form-control "
               type="file"
               name="image"
               accept="image/*"
@@ -578,11 +578,11 @@ const AddUserApplication = () => {
             )}
           </div>
           <div className="id-number p-1">
-            <label className="form-label" htmlFor="passport">
+            <label className="" htmlFor="passport">
               Passport*
             </label>
             <input
-              className="form-control p-2 mb-3"
+              className="form-control "
               type="text"
               name="passport"
               required
@@ -591,11 +591,11 @@ const AddUserApplication = () => {
             />
           </div>
           <div>
-            <label className="form-label" htmlFor="issuedCountry">
+            <label className="" htmlFor="issuedCountry">
               Issued Country
             </label>
             <input
-              className="form-control p-2 mb-5"
+              className="form-control mb-4"
               type="text"
               name="issuedCountry"
               required

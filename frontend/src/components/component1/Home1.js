@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./home1.css";
 import "../../assets/styles/main.css";
 import axios from "axios";
@@ -109,14 +109,14 @@ const Component1 = () => {
                   onChange={(e) => setDob(e.target.value)}
                 />
 
-                <button
+                <Link
+                  to="/addUserApplication"
                   type="submit"
                   className="form-button"
-                  disabled={loading}
                 >
-                  {loading ? "CHECKING STATUS..." : "CHECK APPLICATION STATUS"}
-                </button>
-
+                  APPLY
+                </Link>
+                {loading && <p>Loading...</p>}
                 {error && <p className="form-error">{error}</p>}
               </form>
             </div>
