@@ -1,0 +1,146 @@
+:root {
+  --primary-color: burlywood;
+  --secondary-color: rgb(51, 153, 131);
+  --background-color: white;
+  --hover-background-color: rgb(68, 39, 96);
+  /* --background-color: #desiredColorValue; */
+}
+
+/* styles.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.active {
+  font-weight: bold;
+  color: rgb(255, 136, 0);
+}
+
+/* common starts here */
+
+header {
+  width: 100vw;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid rgb(234, 235, 240);
+}
+
+header a,
+ul li a {
+  text-decoration: none;
+  color: rgba(39, 37, 37, 0.781);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.home-link {
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
+}
+ul li {
+  padding: 0.8rem;
+}
+
+/* common ends here */
+
+/* aside starts here */
+
+aside span {
+  padding-left: 1.4rem;
+}
+.main_body {
+  width: 100vw;
+  /* max-height: 33vh; */
+}
+aside {
+  width: 20%;
+  background-color: rgb(240, 243, 245);
+  border-right: 1px solid rgb(233, 225, 225);
+}
+
+.header-image img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 2rem;
+  border-radius: 100%;
+  background-color: aquamarine;
+  /* margin-left: 60%; */
+}
+
+.header-image {
+  width: 50px;
+  height: 45px;
+  border-radius: 100%;
+}
+
+.header-icon {
+  margin: 2rem 0 0 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding-left: 2rem;
+}
+
+#wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar-wrapper {
+  min-height: 80vh;
+  width: 250px;
+  margin-left: -250px;
+  transition: margin 0.25s ease-out;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+.sidebar-btn {
+  visibility: visible;
+}
+
+.heading-management .btn {
+  margin-left: auto;
+  background-color: darkgreen;
+}
+
+.heading-management .btn a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.common_container {
+  width: 100vw;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  .sidebar-btn {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 412px) {
+  .main_body {
+    width: 40%;
+  }
+}
+
+@media (max-width: 360px) {
+  .main_body {
+    width: 35%;
+  }
+  aside span {
+    padding-left: 0.4rem;
+  }
+}

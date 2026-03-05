@@ -1,0 +1,25 @@
+.success-page {
+    height: 100vh;
+    background: linear-gradient(135deg, #eef2ff, #ffffff);
+}
+
+.success-card {
+    max-width: 500px;
+    background: #ffffff;
+}
+
+.success-icon {
+    font-size: 70px;
+    color: #22c55e;
+}
+
+.success-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+}
+
+.success-btn:hover {
+    background: #1e40af;
+    color: white;
+}

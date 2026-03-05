@@ -1,0 +1,32 @@
+#root {
+  overflow: visible;
+  overflow: initial;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  outline: none;
+}
+
+body,
+body > div {
+  min-height: 100vh;
+}
+
+body > div {
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+}

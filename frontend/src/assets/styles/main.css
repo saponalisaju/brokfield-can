@@ -1,0 +1,591 @@
+:root {
+  --primary-color: burlywood;
+  --secondary-color: rgb(51, 153, 131);
+  --background-color: white;
+  --hover-background-color: rgb(68, 39, 96);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.view_one_top {
+  background: linear-gradient(120deg,
+      rgba(30, 60, 114, 0.25),
+      rgba(42, 82, 152, 0.25),
+      rgba(30, 60, 114, 0.25));
+  background-size: 300% 300%;
+  animation: softGradient 8s ease infinite;
+
+  color: #1e3c72;
+  font-weight: 600;
+  
+  border-left: 5px solid #1e3c72;
+}
+
+@keyframes softGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+hr {
+  opacity: 25%;
+}
+
+.btn_approved {
+  margin: 0.5rem;
+}
+
+.tapp_head_one {
+  width: 39rem;
+}
+
+.tapp_head_two {
+  width: 31rem;
+}
+.brand_logo {
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+}
+.view_one_top {
+  width: 100%;
+  height: 100vh;
+}
+
+.view_one_body {
+  padding: 0 1rem;
+}
+
+.headline {
+  background-color: bisque;
+}
+
+.logo_q {
+  width: 10rem;
+  height: 8rem;
+  margin-left: auto;
+  margin: 1rem 1rem 0 auto;
+  /* box-shadow: 2px 4px 8px rgb(13, 23, 26); */
+}
+.logo_p {
+  width: 10rem;
+  height: 9.5rem;
+  margin: 1rem 0 0 auto;
+}
+
+.bg_headline {
+  background: linear-gradient(to right, rgba(77, 53, 1, 0.78), rgba(2, 94, 32, 0.8), rgba(2, 20, 121, 0.3));
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.user_manage,
+.user_profile,
+.user_application,
+.add_user {
+  width: 68rem;
+  margin-top: 5rem;
+  padding: 0.5rem 1.5rem 0 0;
+  position: absolute;
+  margin-left: 17rem;
+}
+
+.search_option {
+  width: 100%;
+}
+
+.upload_b {
+  width: 4rem;
+  height: 2.3rem;
+}
+
+.search-bar {
+  margin-left: auto;
+}
+
+.search_box {
+  width: 100%;
+}
+
+.search_box .input-search {
+  width: 12rem;
+  height: 2rem;
+}
+
+.input-search {
+  margin-left: auto;
+}
+
+.surname,
+.surname_one {
+  width: 25%;
+  padding: 0.5rem;
+}
+.surname_result,
+.surname_result_one {
+  padding: 0.5rem;
+  width: 75%;
+}
+
+.surname_sex,
+.surname_sex_one {
+  padding: 0.5rem;
+  width: 50%;
+}
+
+.surname_head,
+.surname_head_one {
+  width: 100%;
+}
+
+.view_image {
+  width: 100%;
+}
+.user_image {
+  width: 160px;
+  height: 200px;
+}
+.stamp_logo {
+  /* display: none; */
+  transform: rotate(-30deg);
+  width: 150px;
+  margin: 1rem 0rem 0rem -9.5rem;
+}
+.preview_image {
+  width: 200px;
+  height: 200px;
+}
+
+/* attachment start */
+.print_component {
+  width: 100%;
+}
+
+.attachment {
+  width: 100%;
+}
+/* attachment end */
+
+/* paginated list css start */
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination li.active {
+  font-weight: bold;
+}
+.surname_edit {
+  width: 50%;
+}
+.surname_edit input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.view_one {
+  background-image:
+    linear-gradient(rgba(248, 249, 250, 0.45),
+      /* soft off-white */
+      rgba(248, 249, 250, 0.85)),
+    url("../../assets/images/bg_jol.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+  padding: 12px;
+}
+
+.view_one>h2{
+  background: rgba(233, 229, 231, 0.7);
+  color: #000;
+}
+
+/* paginated list css end */
+
+@media (max-width: 1400px) {
+  .user_manage,
+  .user_profile,
+  .add_user {
+    width: 68rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .user_manage,
+  .user_profile,
+  .add_user {
+    width: 57rem;
+  }
+}
+
+@media (max-width: 992px) {
+  /* view one start */
+  .surname_one,
+  .surname_result_one {
+    width: 50%;
+  }
+
+  .surname_head_one {
+    width: 100%;
+  }
+
+  .sex_birth {
+    flex-direction: column;
+  }
+
+  /* view one end */
+  .user_manage,
+  .user_profile,
+  .add_user {
+    width: 43rem;
+  }
+}
+
+@media (max-width: 810px) {
+  .user_manage,
+  .user_profile,
+  .add_user {
+    width: 32rem;
+    margin-left: 16rem;
+    font-size: 13px;
+  }
+
+  .user_manage,
+  .user_app_head,
+  .user_app a {
+    font-size: 12px;
+  }
+
+  .search-bar {
+    margin-top: 1.5rem;
+  }
+  .search_option {
+    gap: 1rem;
+  }
+  .user_manage_hr {
+    width: 27rem;
+  }
+  .user_manage_app,
+  .user_app {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user_manage,
+  .add_user {
+    width: 32rem;
+  }
+  .user_manage_hr {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .surname,
+  .surname_one,
+  .surname_result,
+  .surname_result_one,
+  .surname_sex,
+  .surname_sex_one {
+    padding: 1px;
+  }
+
+  .user_image {
+    width: 8rem;
+    height: 10rem;
+  }
+
+  .view_one_top {
+    font-size: 0.9rem;
+  }
+
+  .headline {
+    font-size: 1.2rem;
+  }
+
+  .upload_btn {
+    margin-top: 0.1rem;
+  }
+  .logo_q {
+    width: 8rem;
+    height: 7rem;
+  }
+
+  .pagination {
+    width: 12rem;
+    padding-top: 1rem;
+  }
+  .page-link {
+    width: 12rem;
+    padding-top: 1rem;
+  }
+  .surname_sex_one {
+    width: 30%;
+  }
+  .surname_sex {
+    width: 70%;
+  }
+
+  .birth_date,
+  .search_box,
+  .theme_description,
+  .search_option {
+    flex-direction: column;
+  }
+  .user_manage_head a {
+    width: 10rem;
+  }
+  .surname_edit {
+    width: 100%;
+  }
+
+  .user_manage_hr {
+    width: 18rem;
+  }
+
+  .user_manage,
+  .add_user {
+    width: 21rem;
+    padding-top: 1rem;
+  }
+
+  .user_profile {
+    width: 20rem;
+    margin-left: 16.5rem;
+  }
+
+  .input-search,
+  .pagination {
+    margin-left: auto;
+  }
+
+  .search-bar {
+    margin: 0 0 0 auto;
+  }
+  #search {
+    width: 18rem;
+  }
+
+  #identification {
+    width: 17.2rem;
+  }
+
+  #publish {
+    width: 17rem;
+  }
+
+  .name-details,
+  .identification,
+  .gender_date,
+  .city_birth,
+  .company_duration,
+  .job_title {
+    flex-direction: column;
+  }
+
+  .add_user input,
+  .user_manage_hr,
+  #sex,
+  #jobTitle {
+    width: 16rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stamp_logo {
+    width: 120px;
+    margin: 1rem 0 0 -8rem;
+  }
+
+  /* view one start */
+
+  .surname_sex_one {
+    width: 30%;
+  }
+  .surname_sex {
+    width: 70%;
+  }
+
+  /* view one end */
+  .view_one_head {
+    margin: 0;
+  }
+
+  .user_profile {
+    width: 13rem;
+  }
+  .user_manage_head {
+    flex-direction: column;
+  }
+  .user_manage_head a {
+    width: 12rem;
+  }
+  .user_manage_hr {
+    width: 13rem;
+  }
+
+  .user_manage_app {
+    text-align: center;
+  }
+
+  #publish {
+    width: 12rem;
+  }
+  #identification {
+    width: 10rem;
+  }
+  .application_img {
+    width: 160px;
+    height: 160px;
+  }
+  .visa_form,
+  .particulars {
+    width: 12rem;
+  }
+  #sex {
+    width: 10rem;
+  }
+  .user_manage,
+  .add_user {
+    width: 14rem;
+  }
+  .edit_delete {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 412px) {
+  .email_user {
+    font-size: 12px;
+  }
+  #content,
+  #status,
+  #publish,
+  .user_manage_hr,
+  #sex {
+    width: 10rem;
+  }
+  .user_manage_hr {
+    width: 13rem;
+  }
+  .user_manage_head a {
+    width: 10rem;
+  }
+  .user_manage_hr {
+    width: 13rem;
+  }
+  .user_profile {
+    width: 13rem;
+    margin-left: 12rem;
+  }
+  .user_manage_head .btn {
+    margin: 0.3rem 1rem;
+  }
+  .user_manage_head {
+    flex-direction: column;
+  }
+  .user_manage_app {
+    text-align: center;
+  }
+  .user_manage,
+  .add_user {
+    width: 12rem;
+    padding-top: 0;
+    margin-left: 12rem;
+  }
+
+  #search {
+    width: 12rem;
+  }
+  #sex,
+  #jobTitle {
+    width: 11rem;
+  }
+}
+@media (max-width: 360px) {
+  .view_one_body {
+    padding: 0 0.1rem;
+  }
+
+  .upload_b {
+    width: 4rem;
+    height: 2.3rem;
+  }
+
+  .user_profile {
+    width: 12rem;
+    margin-left: 10rem;
+  }
+  /* view one start */
+
+  .surname_sex_one {
+    width: 30%;
+  }
+  .surname_sex {
+    width: 70%;
+  }
+
+  /* view one end */
+  .user_manage {
+    font-size: 10px;
+    padding-top: 1rem;
+    margin-left: 10.4rem;
+  }
+
+  .add_user {
+    font-size: 10px;
+    padding-top: 1rem;
+    margin-left: 10.6rem;
+  }
+
+  .visa_form,
+  .particulars {
+    width: 11rem;
+  }
+
+  .add_user input,
+  .user_manage_hr,
+  #jobTitle {
+    width: 10rem;
+  }
+  .search-bar {
+    display: flex;
+    flex-direction: column;
+  }
+  .user_manage_hr {
+    width: 11rem;
+  }
+  .input-search {
+    width: 10rem;
+  }
+}

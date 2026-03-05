@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import "./header.css";
+import logo from "../../assets/images/logo.png";
+
+const Header = () => {
+  const [navStage, setNavStage] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY;
+
+      if (y < 80) setNavStage(0);
+      else if (y < 200) setNavStage(1);
+      else if (y < 400) setNavStage(2);
+      else setNavStage(3);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <Navbar expand="lg" className={`fixed-top active-nav stage-${navStage}`}>
+      <NavLink to="/">
+        <img className="_img ps-4" src={logo} alt="Logo" />
+      </NavLink>
+
+      <Nav className="ms-auto">
+        <NavLink className="btnHome" to="/login">
+          SIGN IN
+        </NavLink>
+      </Nav>
+    </Navbar>
+  );
+};
+
+export default Header;

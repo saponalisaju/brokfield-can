@@ -1,0 +1,133 @@
+.contain {
+  position: absolute;
+  background-color: white;
+  margin: 6rem 0 0 17rem;
+}
+
+.total_app,
+.total_page {
+  width: 15rem;
+  height: 15rem;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 5px;
+}
+.total_app {
+  background-color: bisque;
+}
+.total_page {
+  background-color: darksalmon;
+}
+.dashboard_hr {
+  width: 33rem;
+}
+
+/* ------visa enquiry starts here----- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.input_enquiry label {
+  color: #fff;
+}
+
+.image_one {
+  background-color: rgb(95, 136, 136);
+}
+
+.enquiry_image {
+  width: 50px;
+  height: 30px;
+}
+.formWhatsUp {
+  max-width: 100vw;
+  height: 10vh;
+  margin-left: 60rem;
+}
+
+/* ------visa enquiry ends here----- */
+
+/* register starts */
+.register {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+.register-form {
+  width: 30rem;
+  background-color: blanchedalmond;
+
+  border-radius: 10px;
+  margin: 10rem auto;
+}
+
+.register-form form {
+  background-color: blanchedalmond;
+}
+
+/* register ends */
+
+@media (max-width: 1200px) {
+}
+@media (max-width: 768px) {
+  .total_app,
+  .total_page {
+    width: 12rem;
+    height: 12rem;
+  }
+  .dashboard_hr {
+    width: 30rem;
+  }
+}
+@media (max-width: 576px) {
+  .register-form {
+    width: 25rem;
+  }
+  button {
+    margin-top: -1rem;
+  }
+  .dashboard {
+    flex-direction: column;
+  }
+  .dashboard_hr {
+    width: 13rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contain {
+    margin-left: 16rem;
+  }
+}
+
+@media (max-width: 412px) {
+  .register-form {
+    width: 20rem;
+  }
+  .contain {
+    margin-left: 11rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .total_app,
+  .total_page {
+    width: 10rem;
+    height: 10rem;
+    padding: 0.8rem;
+    margin: 1rem;
+  }
+  .dashboard_hr {
+    width: 10rem;
+  }
+
+  .super-admin {
+    text-align: center;
+  }
+  .contain {
+    margin-left: 10.5rem;
+  }
+}

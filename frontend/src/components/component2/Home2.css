@@ -1,0 +1,95 @@
+/* ===== CAROUSEL WRAPPER ===== */
+.carousel {
+    max-width: 1000px;
+    /* optional max width for large screens */
+    margin: 0 auto;
+    /* center */
+    padding: 2rem;
+}
+
+.carousel-inner {
+    border-radius: 12px;
+    overflow: hidden;
+    /* keep rounded corners */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    /* responsive height */
+    object-fit: cover;
+    /* fill without distortion */
+    border-radius: 12px;
+}
+
+/* ===== CONTROL BUTTONS ===== */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 100%, 100%;
+    /* scale icons */
+}
+
+/* Optional: hover effect */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    filter: brightness(1.2);
+    transition: 0.3s;
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 992px) {
+    .carousel {
+        padding: 0.5rem;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 7%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        padding: 0.3rem;
+    }
+
+    .carousel-item img {
+        border-radius: 8px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel {
+        padding: 0.2rem;
+    }
+
+    .carousel-item img {
+        border-radius: 6px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 12%;
+    }
+}
+
+@media (max-width: 360px) {
+    .carousel-item img {
+        border-radius: 4px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 15%;
+    }
+}

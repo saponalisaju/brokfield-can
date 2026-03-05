@@ -1,0 +1,180 @@
+s .component_fifteen h4,
+p,
+.icon {
+  padding: 1rem;
+}
+
+.application_process {
+  height: 10rem;
+  font-size: 4rem;
+  background-color: rgb(148, 205, 223);
+}
+
+.main_content_item {
+  width: 60rem;
+  box-shadow: 1rem 1rem 1.2rem rgba(119, 121, 143, 0.363);
+  margin: -2rem auto;
+}
+.main-item-one,
+.main-item-two {
+  display: flex;
+  flex-direction: row;
+}
+
+.processing_item_one,
+.processing_item_two,
+.processing_item_three,
+.processing_item_four {
+  font-size: 1.4rem;
+  border: 1px solid rgba(235, 156, 156, 0.514);
+  width: 15rem;
+  
+}
+
+.processing_item_one p,
+.processing_item_two p,
+.processing_item_three p,
+.processing_item_four p {
+  
+  text-align: left;
+}
+
+.application_process {
+  font-size: 2rem;
+  /* adjust as needed */
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  /* subtle shadow for pop */
+}
+
+.logo-img {
+  height: 50px;
+  /* adjust logo size */
+  width: auto;
+}
+
+.process-card {
+  background: #f4f8ff;
+}
+
+.visa-section {
+  background: #ffffff;
+}
+
+.visa-title {
+  background: #2563eb;
+  color: white;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+}
+
+.tourist {
+  background: #f59e0b;
+}
+
+.work {
+  background: #22c55e;
+}
+
+.student {
+  background: #3b82f6;
+}
+
+.step-card {
+  background: #f9fafb;
+}
+
+.decision-card {
+  background: #ffffff;
+}
+
+.decision-title {
+  background: #2563eb;
+  color: white;
+  text-align: center;
+}
+
+.step-icon {
+  color: #2563eb;
+}
+
+.apply-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+.apply-btn:hover {
+  background: #1e40af;
+}
+
+@media (max-width: 810px) {
+  .main_content_item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 9rem;
+    width: 30rem;
+  }
+  .main-item-one,
+  .main-item-two {
+    display: flex;
+  }
+}
+
+@media (max-width: 576px) {
+  .main_content_item {
+    margin: -2rem auto;
+  }
+  .application_process {
+    height: 12rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main_content_item {
+    margin: -3rem auto 0;
+  }
+  .component_fifteen {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 412px) {
+  .main_content_item {
+    /* width: 60rem; */
+    box-shadow: 0 0 0rem rgba(119, 121, 143, 0.363);
+    background-color: white;
+  }
+
+  .processing_item_one,
+  .processing_item_two,
+  .processing_item_three,
+  .processing_item_four {
+    font-size: 1.4rem;
+    border: 0;
+    width: 20rem;
+    margin: 0 auto;
+  }
+  .main-item-one,
+  .main-item-two {
+    display: flex;
+    flex-direction: column;
+  }
+  .main_content_item {
+    width: 100%;
+  }
+  .application_process {
+    padding-top: 2rem;
+    font-size: 2rem;
+  }
+}
+
+

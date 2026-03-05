@@ -1,0 +1,11 @@
+.about_us {
+  padding: 2rem;
+}
+.about_us h3 {
+  padding: 0.4rem;
+}
+.about_us p {
+  font-size: 1.2rem;
+  margin: 0.4rem;
+  padding: 0.3rem;
+}
