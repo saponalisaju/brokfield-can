@@ -111,7 +111,7 @@ const Component1 = () => {
               {loading ? "CHECKING STATUS..." : "CHECK APPLICATION STATUS"}
             </button>
 
-            {error && <p className="form-error">{error}</p>}
+            {error && <p className="form-error p-0 m-0">{error}</p>}
           </form>
         </div>
       </div>
