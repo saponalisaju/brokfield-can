@@ -545,7 +545,7 @@ const AddUserApplication = () => {
               </select>
             </div>
             <div className="id-number w-50 p-1">
-              <label className="form-label" htmlFor="salary">
+              <label className="" htmlFor="salary">
                 Salary*
               </label>
               <input

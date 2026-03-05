@@ -10,7 +10,9 @@ const Success = () => {
       <div className="success-card text-center p-5 shadow-lg rounded-4">
         <FontAwesomeIcon icon={faCircleCheck} className="success-icon mb-3" />
 
-        <h2 className="mb-3">Application Submitted Successfully</h2>
+        <h2 className="mb-3">
+          Congrats! Your Application Submitted Successfully
+        </h2>
 
         <p className="text-muted mb-4">
           Thank you for your application. Our team will review your submission

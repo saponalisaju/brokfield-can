@@ -11,6 +11,10 @@
   min-height: 10vh;
 }
 
+nav .btnHome{
+  color: gold;
+}
+
 nav a {
   text-decoration: none;
   padding: 1rem;

@@ -29,6 +29,9 @@ const Header = () => {
       </NavLink>
 
       <Nav className="ms-auto">
+        <NavLink className="btnHome" to="/addUserApplication">
+          APPLY NOW
+        </NavLink>
         <NavLink className="btnHome" to="/login">
           SIGN IN
         </NavLink>

@@ -66,61 +66,53 @@ const Component1 = () => {
   };
 
   return (
-    <div className="main_content">
-      <div className="main-one text-center">
-        <div className="video-container">
-          <div className="main_heading">
-            <div className="main_heading_one">
-              <h1 className="heading-one">Brookfield Company of Canada</h1>
-              <h4 className="heading-two">
-                Your path to international career opportunities starts here.
-              </h4>
-              <h4 className="heading-two">
-                Check your application status and move one step closer to your
-                dream job abroad.
-              </h4>
-            </div>
+    <div className="video-container">
+      <div className="main_heading">
+        <div className="main_heading_one">
+          <h1 className="heading-one">Brookfield Company of Canada</h1>
+          <h4 className="heading-two">
+            Your path to international career opportunities starts here.
+          </h4>
+          <h4 className="heading-two">
+            Check your application status and move one step closer to your dream
+            job abroad.
+          </h4>
+        </div>
 
-            <div className="enquiry-form-wrapper">
-              <form className="enquiry-form" onSubmit={handleSubmit}>
-                <input
-                  className="form-input"
-                  type="text"
-                  placeholder="Your Country Here"
-                  value={currentN}
-                  onChange={(e) => setCurrentN(e.target.value)}
-                />
+        <div className="enquiry-form-wrapper">
+          <form className="enquiry-form" onSubmit={handleSubmit}>
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Your Country Here"
+              value={currentN}
+              onChange={(e) => setCurrentN(e.target.value)}
+            />
 
-                <input
-                  className="form-input"
-                  type="text"
-                  placeholder="Passport Number"
-                  value={passport}
-                  onChange={(e) => setPassport(e.target.value)}
-                />
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Passport Number"
+              value={passport}
+              onChange={(e) => setPassport(e.target.value)}
+            />
 
-                <input
-                  className="form-input"
-                  type="text"
-                  placeholder="Date of Birth"
-                  onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => !e.target.value && (e.target.type = "text")}
-                  value={dob}
-                  onChange={(e) => setDob(e.target.value)}
-                />
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Date of Birth"
+              onFocus={(e) => (e.target.type = "date")}
+              onBlur={(e) => !e.target.value && (e.target.type = "text")}
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+            />
 
-                <Link
-                  to="/addUserApplication"
-                  type="submit"
-                  className="form-button"
-                >
-                  APPLY
-                </Link>
-                {loading && <p>Loading...</p>}
-                {error && <p className="form-error">{error}</p>}
-              </form>
-            </div>
-          </div>
+            <button type="submit" className="form-button" disabled={loading}>
+              {loading ? "CHECKING STATUS..." : "CHECK APPLICATION STATUS"}
+            </button>
+
+            {error && <p className="form-error">{error}</p>}
+          </form>
         </div>
       </div>
     </div>
