@@ -24,18 +24,23 @@ const Header = () => {
 
   return (
     <Navbar expand="lg" className={`fixed-top active-nav stage-${navStage}`}>
-      <NavLink to="/">
-        <img className="_img ps-4" src={logo} alt="Logo" />
-      </NavLink>
+      <Navbar.Brand as={NavLink} to="/">
+        <img className="logo-img" src={logo} alt="Logo" />
+      </Navbar.Brand>
 
-      <Nav className="ms-auto">
-        <NavLink className="btnHome" to="/addUserApplication">
-          APPLY NOW
-        </NavLink>
-        <NavLink className="btnHome" to="/login">
-          SIGN IN
-        </NavLink>
-      </Nav>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ms-auto nav-buttons">
+          <NavLink className="btnHome" to="/addUserApplication">
+            APPLY NOW
+          </NavLink>
+
+          <NavLink className="btnHome" to="/login">
+            SIGN IN
+          </NavLink>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };

@@ -1,177 +1,47 @@
-:root {
-  --primary-color: burlywood;
-  --secondary-color: rgb(51, 153, 131);
-  --background-color: white;
-  --hover-background-color: rgb(68, 39, 96);
-}
-
-/* header starts here */
-.navbar {
-  width: 100%;
-  min-height: 10vh;
-}
-
-nav .btnHome{
-  color: rgb(0, 255, 255);
-}
-
-nav a {
-  text-decoration: none;
-  padding: 1rem;
-  color: var(--primary-color);
-  transition: color 0.5s, text-decoration 0.5s;
-}
-
-nav a.active {
-  color: var(--secondary-color);
-  text-decoration: underline;
-}
-
-nav a:hover {
-  color: var(--secondary-color);
-  text-decoration: underline;
-  transition: color 0.1s, text-decoration 0.1s;
-}
-
-
-
-/* Base navbar (transparent) */
-/* Base */
 .active-nav {
-  transition:
-    background-color 0.8s ease,
-    box-shadow 0.8s ease,
-    backdrop-filter 0.8s ease;
-
-  backdrop-filter: blur(0px);
-  box-shadow: none;
-  z-index: 999;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
 }
 
-/* Stage 0 – fully transparent */
-.stage-0 {
-  background-color: rgba(255, 255, 255, 0);
+/* Logo */
+.logo-img {
+  height: 55px;
 }
 
-/* Stage 1 – light white */
-.stage-1 {
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(4px);
+/* Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
-/* Stage 2 – soft blue */
-.stage-2 {
-  background-color: rgba(0, 123, 255, 0.25);
-  backdrop-filter: blur(6px);
-}
-
-/* Stage 3 – dark transparent */
-.stage-3 {
-  background-color: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Logo animation */
-._img {
-  height: 36px;
-  transition: transform 0.4s ease;
-}
-
-.stage-3 ._img {
-  transform: scale(0.9);
-}
-
-/* Link colors */
 .btnHome {
-  color: #ebe7e7;
-  transition: color 0.4s ease;
+  text-decoration: none;
+  padding: 8px 18px;
+  background: rgba(63, 101, 158, 0.3);
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.stage-3 .btnHome {
-  color: #fff;
+.btnHome:hover {
+  background: rgba(39, 58, 87, 0.3);
+  color: white;
 }
 
-
+/* Mobile */
 @media (max-width: 992px) {
-  .navbar {
-    width: 100vw;
-    height: 10vh;
-    padding: 1rem;
-  }
 
-  
-
-  .navbar {
-    width: 100vw;
-  }
-}
-
-@media (max-width: 810px) {
-  .active-nav {
-    top: 0;
-    position: fixed;
-  }
-
-  .navbar {
-    height: 16vh;
-    margin-right: 1rem;
-  }
-
- 
-}
-
-@media (max-width: 576px) {
-  .active-nav {
-    top: 0;
-    position: fixed;
-  }
-
-  .navbar {
-    height: 14.5vh;
-  }
-
-  button {
-    margin-top: -1rem;
-  }
-
-  .active-nav {
-    box-shadow: 1px 1px 0 grey;
-    top: 0;
-    left: 0;
-    position: fixed;
-    transition: background-color 0.8s, box-shadow 0.8s;
-  }
-
-  nav .image_logo {
-    width: 180px;
-    border-radius: 20%;
+  .nav-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
 
   .btnHome {
-    padding: 2px;
-    width: 6rem;
-    border-radius: 10px;
-  }
-}
-
-@media (max-width: 500px) {
-  .btnHome {
-    margin: 0.4rem 0 0.2rem 0;
-  }
-}
-
-@media (max-width: 360px) {
-  .btnHome {
-    padding-left: 4px;
-    border-radius: 10px;
+    width: 100%;
+    text-align: center;
   }
 
-  nav a {
-    padding: 0.1rem;
-  }
-
-  .navbar {
-    height: 10vh;
-  }
 }
