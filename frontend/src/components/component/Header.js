@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./header.css";
 import logo from "../../assets/images/logo.png";
@@ -24,23 +23,15 @@ const Header = () => {
 
   return (
     <Navbar expand="lg" className={`fixed-top active-nav stage-${navStage}`}>
-      <Navbar.Brand as={NavLink} to="/">
-        <img className="logo-img" src={logo} alt="Logo" />
-      </Navbar.Brand>
-
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ms-auto nav-buttons">
-          <NavLink className="btnHome" to="/addUserApplication">
-            APPLY NOW
-          </NavLink>
-
-          <NavLink className="btnHome" to="/login">
-            SIGN IN
-          </NavLink>
-        </Nav>
-      </Navbar.Collapse>
+      <NavLink to="/">
+        <img className="_img ps-4" src={logo} alt="Logo" />
+      </NavLink>
+      <NavLink className="btnHome" to="/addUserApplication">
+        APPLY NOW
+      </NavLink>
+      <NavLink className="btnHome" to="/login">
+        SIGN IN
+      </NavLink>
     </Navbar>
   );
 };

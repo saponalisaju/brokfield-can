@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./home1.css";
 import "../../assets/styles/main.css";
@@ -11,57 +11,58 @@ const Component1 = () => {
   const [passport, setPassport] = useState("");
   const [currentN, setCurrentN] = useState("");
   const [dob, setDob] = useState("");
+  const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  useEffect(() => {
     if (!passport || !dob || !currentN) {
       setError("Passport number and Date of Birth are required");
       return;
     }
+    const fetchData = async () => {
+      setLoading(true);
+      setError("");
+      try {
+        const response = await axios.get(
+          `${apiUrl}/api/application/fetchApplicationEnquiry`,
 
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await axios.get(
-        `${apiUrl}/api/application/fetchApplicationEnquiry`,
-        {
-          params: {
-            passport,
-            dob,
-            currentN,
+          {
+            params: {
+              passport,
+              dob,
+              currentN,
+            },
+            timeout: 20000,
           },
-          timeout: 20000,
-        },
-      );
-
-      const applications = response.data?.applications;
-
-      if (applications?.length > 0) {
-        navigate("/view-one", { state: { application: applications[0] } });
-        console.log("Application found:", applications[0]);
-      } else {
-        const msg =
-          response.data?.message ||
-          "No application found. Please check your details.";
-        setError(msg);
-        console.log("No application found in API response");
+        );
+        console.log("hello", response);
+        setApplications(response.data.applications);
+      } catch (error) {
+        if (error.response) {
+          console.error("Error headers:", error.response.headers);
+          setError("Error response:", error.response.data);
+        } else if (error.request) {
+          console.error("Error request:", error.request);
+          setError("Error request:", error.request);
+        } else {
+          console.error("Error message:", error.message);
+          setError("Error message:", error.message);
+        }
       }
-    } catch (err) {
-      console.error("Fetch error:", err);
-
-      if (err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else if (err.code === "ECONNABORTED") {
-        setError("Request timed out. Please try again.");
-      } else {
-        setError("Server error. Please try again later.");
-      }
-    } finally {
       setLoading(false);
+    };
+    if (passport !== "" && dob !== "" && currentN !== "") {
+      fetchData();
+    }
+  }, [passport, dob, currentN]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (applications.length > 0) {
+      navigate("/view-one", { state: { applications } });
+    } else {
+      setError("No valid application found. Please check your input");
     }
   };
 
