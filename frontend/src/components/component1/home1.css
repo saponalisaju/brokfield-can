@@ -36,25 +36,47 @@
   background: rgba(148, 54, 54, 0.55);
   z-index: -1;
 }
+@keyframes colorPulse {
+  0% {
+    color: #ff0000;
+  }
+
+  25% {
+    color: #ff9900;
+  }
+
+  50% {
+    color: #ffff00;
+  }
+
+  75% {
+    color: #00ff00;
+  }
+
+  100% {
+    color: #ff0000;
+  }
+}
+
 .apply-button {
   display: inline-block;
   padding: 12px 30px;
   margin: 5px 0;
-  background: #007bff;
-  /* Bootstrap primary color */
-  color: white;
+  background: #f1f2f3;
+  color: #ff0000;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
   border-radius: 8px;
-  transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* infinite loop */
 }
 
 .apply-button:hover {
   background: #0056b3;
   /* Darker blue on hover */
-  
+  animation: colorPulse 3s infinite;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 /* ===== CONTENT ===== */
