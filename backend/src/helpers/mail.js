@@ -18,7 +18,7 @@ const sendEmail = async (userEmail, userName, subject, message) => {
       from: '"No Reply" <no-reply@australiaworksvisas.com>',
       to: userEmail,
       subject: subject,
-      text: `Dear ${userName},\n\n${message}\n\nBest regards. Click here https://canadapermitvisa.com for more updates`,
+      text: `Dear ${userName},\n\n${message}\n\nBest regards. Click here https://canadacompanyworkvisa.com for more updates`,
     };
     const info = await transporter.sendMail(mailOption);
     logger.log("info", "message sent: %s", info.response);

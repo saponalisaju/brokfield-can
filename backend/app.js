@@ -23,8 +23,8 @@ app.set("trust proxy", 1);
 // ======= CORS SETUP =======
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://canadacocacolacompanyvisa.com",
-  "https://www.canadacocacolacompanyvisa.com",
+  "https://canadacompanyworkvisa.com",
+  "https://www.canadacompanyworkvisa.com",
 ];
 
 const corsOptions = {
