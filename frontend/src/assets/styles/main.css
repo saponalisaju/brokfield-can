@@ -470,11 +470,6 @@ hr {
     padding: 0;
   }
 
-  select>option{
-    font-size: 12px;
-    padding: 0;
-    margin: 0;
-  }
 
   form-control{
     font-size: 12px;
@@ -533,6 +528,7 @@ hr {
 
   .add_user{
     font-size: 11px;
+    
   }
   .email_user {
     font-size: 12px;
@@ -575,8 +571,16 @@ hr {
   }
   #sex,
   #jobTitle {
+    padding: 0.6rem;
+    font-size: 12px;
     width: 9.3rem;
   }
+
+    input[type="file"], input[type="date"] {
+      font-size: 12px;
+      /* smaller on mobile */
+      padding: 7px;
+    }
 }
 @media (max-width: 360px) {
   .view_one_body {

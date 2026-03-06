@@ -523,7 +523,7 @@ const AddUserApplication = () => {
                 onChange={handleJobChange}
                 required
               >
-                <option value="" disabled>
+                <option className="" value="" disabled>
                   Select Job Title
                 </option>
                 <option value="Food Paching">Food Paching</option>
