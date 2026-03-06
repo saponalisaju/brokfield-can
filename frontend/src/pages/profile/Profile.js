@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Common from "../../layouts/Common";
+
 import "../../assets/styles/main.css";
 import axios from "axios";
 import apiUrl from "../../secret";
@@ -20,7 +20,7 @@ const Profile = () => {
 
     const formData = {
       name,
-      email: "rakibcola@gmail.com", // Static email value
+      email: "peyarulcompany@gmail.com", // Static email value
       password,
       confirmPassword,
     };
@@ -44,8 +44,7 @@ const Profile = () => {
 
   return (
     <>
-      <Common />
-      <main className="add_user">
+      <main className="add_user p-3">
         <h2>Profile</h2>
         <hr className="user_manage_hr" />
         <form onSubmit={handleSubmit}>
@@ -73,7 +72,7 @@ const Profile = () => {
               type="email"
               id="email"
               name="email"
-              value="rakibcola@gmail.com"
+              value="peyarulcompany@gmail.com"
               disabled
             />
           </div>
