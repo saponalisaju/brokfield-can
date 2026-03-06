@@ -3,8 +3,18 @@ import enq from "../../assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/main.css";
 import api from "./api";
-import apiUrl from "../../secret";
-import axios from "axios";
+
+const jobSalaries = {
+  "Food Paching": "$4500",
+  Restaurant: "$4500",
+  "Worker Security": "$4000",
+  Driver: "$5500",
+  Electrician: "$4500",
+  Cleaner: "$3500",
+  Agriculture: "$4000",
+  Supervisor: "$5000",
+  Manager: "$6000",
+};
 
 const AddUserApplication = () => {
   const [applications, setApplications] = useState([]);
@@ -34,11 +44,11 @@ const AddUserApplication = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchApplications = async () => {
       setError("");
       setLoading(true);
       try {
-        const response = await api.get(`/fetchApplication`, { timeout: 5000 });
+        const response = await api.get(`/fetchApplication`);
         setApplications(response.data.applications || []);
       } catch (error) {
         console.error("Error fetching applications:", error);
@@ -48,7 +58,7 @@ const AddUserApplication = () => {
       }
     };
 
-    fetchUsers();
+    fetchApplications();
   }, []);
 
   const onChangeHandler = (e) => {
@@ -254,14 +264,9 @@ const AddUserApplication = () => {
         formDataToSend.append("image", image);
       }
 
-      const response = await axios.post(
-        `${apiUrl}/api/application/addApplication`,
-        formDataToSend,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-          timeout: 20000,
-        },
-      );
+      const response = await api.post(`/addApplication`, formDataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       if (response?.status === 201) {
         setFormData({
@@ -297,18 +302,6 @@ const AddUserApplication = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const jobSalaries = {
-    "Food Paching": "$4500",
-    Restaurant: "$4500",
-    "Worker Security": "$4000",
-    Driver: "$5500",
-    Electrician: "$4500",
-    Cleaner: "$3500",
-    Agriculture: "$4000",
-    Supervisor: "$5000",
-    Manager: "$6000",
   };
 
   const handleJobChange = (e) => {
