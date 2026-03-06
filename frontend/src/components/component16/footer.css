@@ -39,9 +39,8 @@
 }
 
 @media (max-width: 480px) {
-  .footer_image img {
-    width: 80px;
-    height: 80px;
+  .footer-logo{
+    height: 40px;
   }
   .footer_content_area ul {
     margin: 0;

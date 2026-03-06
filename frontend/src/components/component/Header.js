@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
+// import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./header.css";
 import logo from "../../assets/images/logo.png";
@@ -28,11 +28,11 @@ const Header = () => {
         <img className="_img ps-4" src={logo} alt="Logo" />
       </NavLink>
 
-      <Nav className="ms-auto">
+      {/* <Nav className="ms-auto">
         <NavLink className="btnHome" to="/login">
           SIGN IN
         </NavLink>
-      </Nav>
+      </Nav> */}
     </Navbar>
   );
 };

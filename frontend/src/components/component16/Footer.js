@@ -53,17 +53,17 @@ const Footer = () => {
 
           {/* Right Links */}
           <div className="col-12 col-md-4 d-flex flex-wrap justify-content-md-end gap-2">
-            <NavLink className="text-white text-decoration-none me-3" to="/">
-              Home Page
-            </NavLink>
             <NavLink
               className="text-white text-decoration-none me-3"
-              to="/enquiry"
+              to="/login"
             >
-              Visa Enquiry Page
+              SIGN IN
             </NavLink>
-            <NavLink className="text-white text-decoration-none" to="/login">
-              Login Page
+            <NavLink className="text-white text-decoration-none me-3" to="/">
+              HOME
+            </NavLink>
+            <NavLink className="text-white text-decoration-none" to="/enquiry">
+              VISA ENQUIRY
             </NavLink>
           </div>
         </div>
