@@ -21,7 +21,6 @@ const Dashboard = () => {
       try {
         const response = await api.get("/fetchApplication", {
           params: { page, limit: 10 },
-          timeout: 10000,
         });
         console.log(response);
         setApplications(response.data.applications);
