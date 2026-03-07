@@ -3,17 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faFileCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Common from "../layouts/Common";
 import "./auth.css";
-import axios from "axios";
-import apiUrl from "../secret";
 import Spinner from "react-bootstrap/Spinner";
-
-const api = axios.create({
-  baseURL: `${apiUrl}/api/application`,
-  headers: {
-    "Content-Type": "application/json",
-  },
-  withCredentials: true,
-});
+import api from "./applications/api";
 
 const Dashboard = () => {
   const [applications, setApplications] = useState([]);
@@ -91,7 +82,7 @@ const Dashboard = () => {
               ))}
             </div>
           </div>
-          <div className="pagination-controls">
+          <div className="pagination-controls d-none">
             <button
               onClick={() => setPage(page - 1)}
               disabled={page === 1}
