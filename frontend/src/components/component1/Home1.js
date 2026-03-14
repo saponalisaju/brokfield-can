@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home1.css";
 import "../../assets/styles/main.css";
@@ -10,39 +10,10 @@ const Component1 = () => {
   const [passport, setPassport] = useState("");
   const [currentN, setCurrentN] = useState("");
   const [dob, setDob] = useState("");
-  const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError("");
-      try {
-        const response = await api.get("/fetchApplicationEnquiry", {
-          params: { passport, dob, currentN },
-        });
-        setApplications(response.data.applications || []);
-      } catch (err) {
-        if (err.response) {
-          setError(err.response.data || "Error response from server");
-        } else if (err.request) {
-          setError("No response from server");
-        } else {
-          setError(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    // Only fetch if all fields have values
-    if (passport && dob && currentN) {
-      fetchData();
-    }
-  }, [passport, dob, currentN]);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!passport || !dob || !currentN) {
@@ -50,10 +21,31 @@ const Component1 = () => {
       return;
     }
 
-    if (applications.length > 0) {
-      navigate("/view-one", { state: { applications } });
-    } else {
-      setError("No valid application found. Please check your input");
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await api.get("/fetchApplicationEnquiry", {
+        params: { passport, dob, currentN },
+      });
+
+      const applications = response.data.applications || [];
+
+      if (applications.length > 0) {
+        navigate("/view-one", { state: { applications } });
+      } else {
+        setError("No valid application found. Please check your input");
+      }
+    } catch (err) {
+      if (err.response) {
+        setError(err.response.data || "Error response from server");
+      } else if (err.request) {
+        setError("No response from server");
+      } else {
+        setError(err.message);
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,7 +63,6 @@ const Component1 = () => {
           </h4>
         </div>
 
-        {/* Apply Now Button */}
         <Link className="apply-button" to="/addUserApplication">
           APPLY NOW
         </Link>
