@@ -20,7 +20,6 @@ import SliderManagement from "./pages/sliders/SliderManagement";
 import EditSlider from "./pages/sliders/EditSlider";
 import PrivateRoute from "./pages/PrivateRoute";
 import AddSlider from "./pages/sliders/AddSlider";
-import VisaEnquiry from "./pages/VisaEnquiry";
 import ViewOne from "./pages/applications/ViewOne";
 import Terms from "./layouts/Terms";
 import About from "./layouts/About";
@@ -124,7 +123,6 @@ const App = () => {
 
           <Route path="/terms" element={<Terms />} />
           <Route path="/about" element={<About />} />
-          <Route path="/enquiry" element={<VisaEnquiry />} />
           <Route path="/view-one" element={<ViewOne />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Home />} />

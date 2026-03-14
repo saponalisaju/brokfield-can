@@ -57,17 +57,23 @@ exports.fetchApplicationById = async (req, res) => {
 
 exports.fetchApplicationEnquiry = async (req, res) => {
   try {
-    const passport = (req.query.passport || "").trim();
-    const dob = req.query.dob ? new Date(req.query.dob) : null;
-    const name = (req.query.name || "").trim();
+    const { search = "", search1 = "", search2 = "" } = req.query;
 
-    if (!passport || !dob) {
+    if (!search || !search1 || !search2) {
       return res.status(400).json({
-        message: "Passport and Date of Birth are required",
+        message:
+          "Passport, Current Nationality, and Date of Birth are required.",
       });
     }
 
-    // normalize dob day range
+    const dob = new Date(search2);
+    if (isNaN(dob.getTime())) {
+      return res.status(400).json({
+        message: "Invalid Date of Birth format.",
+      });
+    }
+
+    // Normalize DOB to cover the full day
     const startOfDay = new Date(dob);
     startOfDay.setHours(0, 0, 0, 0);
 
@@ -75,27 +81,20 @@ exports.fetchApplicationEnquiry = async (req, res) => {
     endOfDay.setHours(23, 59, 59, 999);
 
     const query = {
-      passport: passport,
+      passport: { $regex: `^${search}$`, $options: "i" }, // exact match, case-insensitive
+      currentN: { $regex: `^${search1}$`, $options: "i" }, // exact match, case-insensitive
       dob: { $gte: startOfDay, $lte: endOfDay },
     };
 
-    // optional name validation (NOT regex heavy)
-    if (name) {
-      query.$or = [{ surname: name }, { givenN: name }];
-    }
+    const applications = await Application.find(query);
 
-    const application = await Application.findOne(query);
-
-    if (!application) {
-      return res.status(404).json({
-        message: "No application found. Please check your details.",
-      });
-    }
-
-    res.json({ applications: [application] });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
+    return res.json({ applications });
+  } catch (error) {
+    console.error("Error fetching applications:", error.message);
+    return res.status(500).json({
+      message: "An error occurred while fetching applications.",
+      error: error.message,
+    });
   }
 };
 

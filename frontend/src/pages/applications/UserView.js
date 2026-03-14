@@ -103,7 +103,6 @@ const UserView = () => {
         formDataWithFiles,
         {
           headers: { "Content-Type": "multipart/form-data" },
-          timeout: 10000,
         },
       );
       if (response?.status === 200) {
@@ -123,9 +122,7 @@ const UserView = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await api.put(`/updateApplicationApprove/${id}`, {
-        timeout: 5000,
-      });
+      const response = await api.put(`/updateApplicationApprove/${id}`);
       if (response?.status === 200) {
         navigate("/userView", { replace: true });
       } else {
@@ -193,11 +190,6 @@ const UserView = () => {
     }
   };
 
-  const handleImageError = (e) => {
-    e.target.src =
-      "https://res.cloudinary.com/dfkurqnpj/image/upload/v1740317988/travelApp/applications/default.jpg";
-  };
-
   const formattedDate = moment(formData.dob, moment.ISO_8601).format(
     "YYYY-MM-DD",
   );
@@ -222,12 +214,13 @@ const UserView = () => {
               {formData.image ? (
                 <img
                   className="user_image mb-2 p-1"
-                  src={
-                    formData.image ||
-                    "https://res.cloudinary.com/dfkurqnpj/image/upload/v1740317988/travelApp/application/image.jpg"
-                  }
-                  alt="Slider Thumbnail"
-                  onError={handleImageError}
+                  src={formData.image}
+                  alt={`${formData.name}'s profile`}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://res.cloudinary.com/dfkurqnpj/image/upload/v1740317988/travelApp/application/image.jpg";
+                  }}
                 />
               ) : (
                 <p>No image available</p>

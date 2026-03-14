@@ -6,15 +6,11 @@ import moment from "moment";
 
 const ViewOne = () => {
   const location = useLocation();
-  const application = location.state?.application;
+  const { applications } = location.state || {};
 
-  if (!application) {
+  if (!applications) {
     return <div>No application data found.</div>;
   }
-
-  const formattedDate = application.dob
-    ? moment(application.dob, moment.ISO_8601).format("YYYY-MM-DD")
-    : "";
 
   return (
     <React.Fragment>
@@ -71,194 +67,213 @@ const ViewOne = () => {
       >
         <div id="printableArea">
           <ul className="view_one_body m-0 p-1">
-            {/* Render single application directly */}
-            <li className="border border-1 m-0 p-0" key={application._id}>
-              <h2 className="view_one_head pb-3">
-                Applicants Copy ({application.isStatus})
-              </h2>
-              <div className="view_one_main">
-                <div className="me-auto d-flex head_image">
-                  <div className="d-flex">
-                    {application.image ? (
-                      <img
-                        className="user_image p-2"
-                        src={application.image}
-                        alt="Applicant"
-                      />
-                    ) : (
-                      <p>No image available</p>
-                    )}
-                  </div>
-                  <img className="logo_p" src={logo} alt="logo" />
-                </div>
-
-                <div className="border border-2 view_one">
-                  <h2 className="fw-bold text-center text-uppercase py-2 m-0">
-                    {application.surname} {application.givenN}
+            {applications.map((application) => {
+              const formattedDate = moment(
+                application.dob,
+                moment.ISO_8601,
+              ).format("YYYY-MM-DD");
+              return (
+                <li className="border border-1 m-0 p-0" key={application._id}>
+                  <h2 className="view_one_head pb-3">
+                    Applicants Copy ({application.isStatus})
                   </h2>
-
-                  <h4 className="bg_headline py-2 m-0">
-                    A. Personal Particulars
-                  </h4>
-                  <div className="surname_given">
-                    <div className="d-flex surname_head_one">
-                      <strong className="border surname_one">Surname</strong>
-                      <span className="border surname_result_one">
-                        {application.surname}
-                      </span>
-                    </div>
-                    <div className="d-flex">
-                      <strong className="border surname_one">Given Name</strong>
-                      <span className="border surname_result_one">
-                        {application.givenN}
-                      </span>
-                    </div>
-                    <div className="d-flex sex_birth">
-                      <div className="d-flex surname_head">
-                        <strong className="border surname_sex_one">Sex</strong>
-                        <span className="border surname_sex">
-                          {application.sex}
-                        </span>
-                      </div>
-                      <div className="d-flex surname_head">
-                        <strong className="border surname_sex_one">
-                          Date of Birth
-                        </strong>
-                        <span className="border surname_sex">
-                          {formattedDate}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="d-flex sex_birth">
-                      <div className="d-flex surname_head">
-                        <strong className="border surname_sex">
-                          Place of Birth Town/City
-                        </strong>
-                        <span className="border surname_sex">
-                          {application.birthCity}
-                        </span>
-                      </div>
-                      <div className="d-flex surname_head">
-                        <strong className="border surname_sex">
-                          Visible Identification Marks
-                        </strong>
-                        <span className="border surname_sex">
-                          {application.identification}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="d-flex sex_birth">
-                      <div className="d-flex surname_head">
-                        <strong className="border surname_sex_one">
-                          Current Nationality
-                        </strong>
-                        <span className="border surname_sex">
-                          {application.currentN}
-                        </span>
-                      </div>
-                      <div className="d-flex surname_head">
-                        <strong className="border surname_sex_one">
-                          National ID No
-                        </strong>
-                        <span className="border surname_sex">
-                          {application.nationalId}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 className="bg_headline py-2 m-0">B. Company Details</h4>
-                  <div className="d-flex sex_birth">
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex_one">
-                        Company Name
-                      </strong>
-                      <span className="border surname_sex">
-                        {application.company}
-                      </span>
-                    </div>
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex_one">
-                        Job Title
-                      </strong>
-                      <span className="border surname_sex">
-                        {application.jobTitle}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="d-flex sex_birth">
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex">
-                        Duty Duration
-                      </strong>
-                      <span className="border surname_sex">
-                        {application.dutyDuration}
-                      </span>
-                    </div>
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex">Salary</strong>
-                      <span className="border surname_sex">
-                        {application.salary}
-                      </span>
-                    </div>
-                  </div>
-
-                  <h4 className="bg_headline">C. Passport Details</h4>
-                  <div className="d-flex sex_birth">
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex_one">
-                        Passport No
-                      </strong>
-                      <span className="border surname_sex">
-                        {application.passport}
-                      </span>
-                    </div>
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex_one">
-                        Issued Country
-                      </strong>
-                      <span className="border surname_sex">
-                        {application.issuedCountry}
-                      </span>
-                    </div>
-                  </div>
-
-                  <h4 className="bg_headline">
-                    D. Applicant's Contact Details
-                  </h4>
-                  <div className="d-flex sex_birth">
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex_one">Phone</strong>
-                      <span className="border surname_sex">
-                        {application.phone}
-                      </span>
-                    </div>
-                    <div className="d-flex surname_head">
-                      <strong className="border surname_sex_one">Email</strong>
-                      <span className="border surname_sex email_user">
-                        {application.email}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="image_display">
-                  <h1>Documents:</h1>
-                  <ul className="multiple_file m-0 p-0">
-                    {Array.isArray(application.file1) &&
-                      application.file1.map((file, index) => (
-                        <li key={index}>
+                  <div className="view_one_main">
+                    <div className="me-auto d-flex head_image">
+                      <div className="d-flex">
+                        {application.image ? (
                           <img
-                            className="w-100 pb-1"
-                            src={file}
-                            alt="document"
+                            className="user_image p-2"
+                            src={application.image}
+                            alt="Applicant"
                           />
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              </div>
-            </li>
+                        ) : (
+                          <p>No image available</p>
+                        )}
+                      </div>
+                      <img className="logo_p" src={logo} alt="logo" />
+                    </div>
+
+                    <div className="border border-2 view_one">
+                      <h2 className="fw-bold text-center text-uppercase py-2 m-0">
+                        {application.surname} {application.givenN}
+                      </h2>
+
+                      <h4 className="bg_headline py-2 m-0">
+                        A. Personal Particulars
+                      </h4>
+                      <div className="surname_given">
+                        <div className="d-flex surname_head_one">
+                          <strong className="border surname_one">
+                            Surname
+                          </strong>
+                          <span className="border surname_result_one">
+                            {application.surname}
+                          </span>
+                        </div>
+                        <div className="d-flex">
+                          <strong className="border surname_one">
+                            Given Name
+                          </strong>
+                          <span className="border surname_result_one">
+                            {application.givenN}
+                          </span>
+                        </div>
+                        <div className="d-flex sex_birth">
+                          <div className="d-flex surname_head">
+                            <strong className="border surname_sex_one">
+                              Sex
+                            </strong>
+                            <span className="border surname_sex">
+                              {application.sex}
+                            </span>
+                          </div>
+                          <div className="d-flex surname_head">
+                            <strong className="border surname_sex_one">
+                              Date of Birth
+                            </strong>
+                            <span className="border surname_sex">
+                              {formattedDate}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="d-flex sex_birth">
+                          <div className="d-flex surname_head">
+                            <strong className="border surname_sex">
+                              Place of Birth Town/City
+                            </strong>
+                            <span className="border surname_sex">
+                              {application.birthCity}
+                            </span>
+                          </div>
+                          <div className="d-flex surname_head">
+                            <strong className="border surname_sex">
+                              Visible Identification Marks
+                            </strong>
+                            <span className="border surname_sex">
+                              {application.identification}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="d-flex sex_birth">
+                          <div className="d-flex surname_head">
+                            <strong className="border surname_sex_one">
+                              Current Nationality
+                            </strong>
+                            <span className="border surname_sex">
+                              {application.currentN}
+                            </span>
+                          </div>
+                          <div className="d-flex surname_head">
+                            <strong className="border surname_sex_one">
+                              National ID No
+                            </strong>
+                            <span className="border surname_sex">
+                              {application.nationalId}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <h4 className="bg_headline py-2 m-0">
+                        B. Company Details
+                      </h4>
+                      <div className="d-flex sex_birth">
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex_one">
+                            Company Name
+                          </strong>
+                          <span className="border surname_sex">
+                            {application.company}
+                          </span>
+                        </div>
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex_one">
+                            Job Title
+                          </strong>
+                          <span className="border surname_sex">
+                            {application.jobTitle}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="d-flex sex_birth">
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex">
+                            Duty Duration
+                          </strong>
+                          <span className="border surname_sex">
+                            {application.dutyDuration}
+                          </span>
+                        </div>
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex">Salary</strong>
+                          <span className="border surname_sex">
+                            {application.salary}
+                          </span>
+                        </div>
+                      </div>
+
+                      <h4 className="bg_headline">C. Passport Details</h4>
+                      <div className="d-flex sex_birth">
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex_one">
+                            Passport No
+                          </strong>
+                          <span className="border surname_sex">
+                            {application.passport}
+                          </span>
+                        </div>
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex_one">
+                            Issued Country
+                          </strong>
+                          <span className="border surname_sex">
+                            {application.issuedCountry}
+                          </span>
+                        </div>
+                      </div>
+
+                      <h4 className="bg_headline">
+                        D. Applicant's Contact Details
+                      </h4>
+                      <div className="d-flex sex_birth">
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex_one">
+                            Phone
+                          </strong>
+                          <span className="border surname_sex">
+                            {application.phone}
+                          </span>
+                        </div>
+                        <div className="d-flex surname_head">
+                          <strong className="border surname_sex_one">
+                            Email
+                          </strong>
+                          <span className="border surname_sex email_user">
+                            {application.email}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="image_display">
+                      <h1>Documents:</h1>
+                      <ul className="multiple_file m-0 p-0">
+                        {Array.isArray(application.file1) &&
+                          application.file1.map((file, index) => (
+                            <li key={index}>
+                              <img
+                                className="w-100 pb-1"
+                                src={file}
+                                alt="document"
+                              />
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
