@@ -7,9 +7,9 @@ import api from "../../pages/applications/api";
 const Component1 = () => {
   const navigate = useNavigate();
 
-  const [passport, setPassport] = useState("");
-  const [currentN, setCurrentN] = useState("");
-  const [dob, setDob] = useState("");
+  const [search, setSearch] = useState("");
+  const [search1, setSearch1] = useState("");
+  const [search2, setSearch2] = useState("");
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,12 +20,12 @@ const Component1 = () => {
       setError("");
       try {
         const response = await api.get("/fetchApplicationEnquiry", {
-          params: { passport, dob, currentN },
+          params: { search, search1, search2 },
         });
         setApplications(response.data.applications || []);
       } catch (err) {
         if (err.response) {
-          setError(err.response.data || "Error response from server");
+          setError(err.response?.data?.message || "Server error");
         } else if (err.request) {
           setError("No response from server");
         } else {
@@ -37,15 +37,15 @@ const Component1 = () => {
     };
 
     // Only fetch if all fields have values
-    if (passport && dob && currentN) {
+    if (search !== "" && search1 !== "" && search2 !== "") {
       fetchData();
     }
-  }, [passport, dob, currentN]);
+  }, [search, search1, search2]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!passport || !dob || !currentN) {
+    if (!search || !search1 || !search2) {
       setError("Passport number, Country, and Date of Birth are required");
       return;
     }
@@ -82,16 +82,16 @@ const Component1 = () => {
               className="form-input"
               type="text"
               placeholder="Your Country Here"
-              value={currentN}
-              onChange={(e) => setCurrentN(e.target.value)}
+              value={search1}
+              onChange={(e) => setSearch1(e.target.value)}
             />
 
             <input
               className="form-input"
               type="text"
               placeholder="Passport Number"
-              value={passport}
-              onChange={(e) => setPassport(e.target.value)}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
 
             <input
@@ -100,8 +100,8 @@ const Component1 = () => {
               placeholder="Date of Birth"
               onFocus={(e) => (e.target.type = "date")}
               onBlur={(e) => !e.target.value && (e.target.type = "text")}
-              value={dob}
-              onChange={(e) => setDob(e.target.value)}
+              value={search2}
+              onChange={(e) => setSearch2(e.target.value)}
             />
 
             <button type="submit" className="form-button" disabled={loading}>
