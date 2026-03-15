@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import enq from "../../assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/main.css";
-import api from "./api";
+import api from "../api";
 
 const jobSalaries = {
   "Food Paching": "$4500",
@@ -48,7 +48,7 @@ const AddUserApplication = () => {
       setError("");
       setLoading(true);
       try {
-        const response = await api.get(`/fetchApplication`);
+        const response = await api.get(`/application/fetchApplication`);
         setApplications(response.data.applications || []);
       } catch (error) {
         console.error("Error fetching applications:", error);
@@ -264,9 +264,13 @@ const AddUserApplication = () => {
         formDataToSend.append("image", image);
       }
 
-      const response = await api.post(`/addApplication`, formDataToSend, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await api.post(
+        `/application/addApplication`,
+        formDataToSend,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        },
+      );
 
       if (response?.status === 201) {
         setFormData({

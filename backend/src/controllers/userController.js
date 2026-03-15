@@ -1,87 +1,47 @@
 const bcrypt = require("bcryptjs");
-const crypto = require("crypto");
 const createError = require("http-errors");
-const jwt = require("jsonwebtoken");
-const cookie = require("cookie-parser");
 const User = require("../models/userModel");
-const MY_KEY = "MY_LOGIN_KEY";
-
-const {
-  successResponse,
-  errorResponse,
-} = require("../helpers/responseHelpers");
 const mongoose = require("mongoose");
-const {
-  jwtActivationKey,
-  jwtAccessKey,
-  jwtRefreshKey,
-} = require("../../secret");
+const { jwtActivationKey } = require("../../secret");
 const { createToken } = require("../helpers/jsonwebtoken");
-const data = require("../../data");
-const Application = require("../models/applicationModel");
 
-exports.register = async (req, res, next) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) {
+// ✅ Sign up function
+exports.signUp = async (req, res) => {
+  const { name, email, password, accountName, accountNumber } = req.body;
+
+  if (!name || !email || !password || !accountName || !accountNumber) {
     return res
       .status(400)
       .json({ success: false, msg: "All fields are required" });
   }
+
   try {
-    const existingUser = await User.exists({ email });
-    if (existingUser) {
-      return res
-        .status(400)
-        .json({ success: false, msg: "User already exists" });
+    // Prevent multiple admins (if needed)
+    const adminExists = await User.findOne({ isAdmin: true });
+    if (adminExists) {
+      return res.status(400).json({ msg: "Admin already exists" });
     }
-    const user = new User({
-      name,
-      email,
-      password,
-    });
-    const savedUser = await user.save();
-    return res.status(201).json({
-      success: true,
-      message: "User created successfully",
-      user: {
-        id: savedUser._id,
-        email: savedUser.email,
-      },
-    });
-  } catch (error) {
-    return res
-      .status(500)
-      .json({ success: false, message: "Server error", error: error.message });
-  }
-};
 
-exports.addUser = async (req, res, next) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) {
-    return res
-      .status(400)
-      .json({ success: false, msg: "All fields are required" });
-  }
-  try {
-    // const existingUser = await User.exists({ email });
-    // if (existingUser) {
-    //   return res
-    //     .status(400)
-    //     .json({ success: false, msg: "User already exists" });
-    // }
     const user = new User({
       isAdmin: true,
       name,
       email,
       password,
+      accountName,
+      accountNumber,
     });
+
     const savedUser = await user.save();
+
     return res.status(201).json({
       success: true,
       message: "User created successfully",
       user: {
         id: savedUser._id,
+        name: savedUser.name,
         email: savedUser.email,
+        accountName: savedUser.accountName,
+        accountNumber: savedUser.accountNumber,
       },
     });
   } catch (error) {
@@ -133,14 +93,18 @@ exports.login = async (req, res, next) => {
 
 exports.getUsers = async (req, res, next) => {
   try {
-    const superEmail = "manikkibrya@gmail.com";
-    const users = await User.find({ email: { $ne: superEmail } });
-    if (!users) {
-      res.status(404).json("users not found");
+    // Fetch all users
+    const users = await User.find(); // remove undefined email filter
+
+    if (!users || users.length === 0) {
+      return res.status(404).json({ success: false, msg: "Users not found" });
     }
-    res.json(users);
+
+    // Return users in consistent format
+    return res.status(200).json({ success: true, users });
   } catch (error) {
-    next(error);
+    console.error("Error fetching users:", error);
+    next(error); // pass to global error handler
   }
 };
 

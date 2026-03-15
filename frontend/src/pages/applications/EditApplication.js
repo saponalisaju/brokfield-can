@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Common from "../../layouts/Common";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../../assets/styles/main.css";
-import api from "./api";
+import api from "../api";
 const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png", "image/jpg"];
 const MAX_FILE_SIZE = 2097152;
 
@@ -88,7 +88,7 @@ const EditApplication = () => {
     ) {
       setLoading(false);
       setError(
-        "Surname and Given name must be between 3 and 31 characters long."
+        "Surname and Given name must be between 3 and 31 characters long.",
       );
       return;
     }
@@ -103,12 +103,12 @@ const EditApplication = () => {
 
     try {
       const response = await api.put(
-        `/updateApplication/${id}`,
+        `/application/updateApplication/${id}`,
         formDataWithFile,
         {
           headers: { "Content-Type": "multipart/form-data" },
           id,
-        }
+        },
       );
       if (response?.status === 200) {
         navigate("/application", { replace: true });

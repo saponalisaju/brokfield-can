@@ -4,7 +4,7 @@ import { faCopy, faFileCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Common from "../layouts/Common";
 import "./auth.css";
 import Spinner from "react-bootstrap/Spinner";
-import api from "./applications/api";
+import api from "./api";
 
 const Dashboard = () => {
   const [applications, setApplications] = useState([]);
@@ -19,7 +19,7 @@ const Dashboard = () => {
       setLoading(true);
       setError("");
       try {
-        const response = await api.get("/fetchApplication", {
+        const response = await api.get("/application/fetchApplication", {
           params: { page, limit: 10 },
         });
         console.log(response);

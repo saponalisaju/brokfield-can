@@ -7,53 +7,25 @@ import {
 
 import Home from "./components/app";
 import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/profile/Profile";
 import Login from "./pages/Login";
-import UserManagement from "./pages/userManagement/UserManagement";
-import AddUserManagement from "./pages/userManagement/AddUserManagement";
-import EditUserManagement from "./pages/userManagement/EditUserManagement";
 import ApplicationManagement from "./pages/applications/ApplicationManagement";
 import AddUserApplication from "./pages/applications/AddUserApplication";
 import EditApplication from "./pages/applications/EditApplication";
 import UserView from "./pages/applications/UserView";
-import SliderManagement from "./pages/sliders/SliderManagement";
-import EditSlider from "./pages/sliders/EditSlider";
 import PrivateRoute from "./pages/PrivateRoute";
-import AddSlider from "./pages/sliders/AddSlider";
 import ViewOne from "./pages/applications/ViewOne";
 import Terms from "./layouts/Terms";
 import About from "./layouts/About";
 import Success from "./pages/applications/Success";
+import SignUp from "./pages/SignUp";
+import User from "./pages/User";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
     <>
       <Router>
         <Routes>
-          <Route
-            path="/userManagement"
-            element={
-              <PrivateRoute>
-                <UserManagement />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/addUserManagement"
-            element={
-              <PrivateRoute>
-                <AddUserManagement />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/editUserManagement"
-            element={
-              <PrivateRoute>
-                <EditUserManagement />
-              </PrivateRoute>
-            }
-          />
           <Route
             path="/application"
             element={
@@ -88,30 +60,7 @@ const App = () => {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/slider"
-            element={
-              <PrivateRoute>
-                <SliderManagement />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/addSliders"
-            element={
-              <PrivateRoute>
-                <AddSlider />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/editSlider"
-            element={
-              <PrivateRoute>
-                <EditSlider />
-              </PrivateRoute>
-            }
-          />
+
           <Route
             path="/dashboard"
             element={
@@ -124,9 +73,11 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/about" element={<About />} />
           <Route path="/view-one" element={<ViewOne />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Home />} />
+          <Route path="/get_users" element={<User />} />
+          <Route path="/update_user" element={<Profile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sign_up" element={<SignUp />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>

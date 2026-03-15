@@ -5,7 +5,6 @@ import {
   faCircleUser,
   faGear,
   faHome,
-  faSliders,
   faTimes,
   faUsersViewfinder,
 } from "@fortawesome/free-solid-svg-icons";
@@ -91,19 +90,19 @@ const Common = () => {
                   <h5 className="fw-bold">Sub-admin</h5>
                   <NavLink
                     className={({ isActive }) => (isActive ? "active" : "")}
-                    to="/userManagement"
+                    to="/get_users"
                   >
                     <FontAwesomeIcon icon={faUsersViewfinder} />
-                    <span>Admin List</span>
+                    <span>Admin details</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     className={({ isActive }) => (isActive ? "active" : "")}
-                    to="/addUserManagement"
+                    to="/update_user"
                   >
                     <FontAwesomeIcon icon={faUsersViewfinder} />
-                    <span>Add Admin</span>
+                    <span>Admin Update</span>
                   </NavLink>
                 </li>
                 <li>
@@ -125,7 +124,7 @@ const Common = () => {
                     <span className="">Add Application </span>
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <h5 className="fw-bold">Approved</h5>
                   <NavLink
                     className={({ isActive }) => (isActive ? "active" : "")}
@@ -134,8 +133,8 @@ const Common = () => {
                     <FontAwesomeIcon icon={faSliders} />
                     <span className="">Slider List</span>
                   </NavLink>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <NavLink
                     className={({ isActive }) => (isActive ? "active" : "")}
                     to="/addSliders"
@@ -143,12 +142,12 @@ const Common = () => {
                     <FontAwesomeIcon icon={faSliders} />
                     <span className="">Add Slider</span>
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                   <h5 className="fw-bold">Super-admin</h5>
                   <NavLink
                     className={({ isActive }) => (isActive ? "active" : "")}
-                    to="/profile"
+                    to="/update_user"
                   >
                     <FontAwesomeIcon icon={faCircleUser} />
                     <span className="">Profile</span>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/styles/main.css";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import api from "./api";
 import logo_p from "../../assets/images/logo.png";
 import moment from "moment";
 import Footer from "../../components/component16/Footer";
+import api from "../api";
 
 const UserView = () => {
   const [error, setError] = useState("");
@@ -99,7 +99,7 @@ const UserView = () => {
 
     try {
       const response = await api.put(
-        `/updateApplicationAdd/${id}`,
+        `/application/updateApplicationAdd/${id}`,
         formDataWithFiles,
         {
           headers: { "Content-Type": "multipart/form-data" },

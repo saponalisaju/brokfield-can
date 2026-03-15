@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Common from "../../layouts/Common";
 import "../../assets/styles/main.css";
-import api from "./api";
+import api from "../api";
 
 const ApplicationManagement = () => {
   const [applications, setApplications] = useState([]);
@@ -17,9 +17,8 @@ const ApplicationManagement = () => {
       setLoading(true);
       setError("");
       try {
-        const response = await api.get(`/fetchApplication`, {
+        const response = await api.get(`/application/fetchApplication`, {
           params: { page, limit: 10, search },
-          timeout: 10000,
         });
         console.log("hello", response);
         setApplications(response?.data?.applications || []);
@@ -28,12 +27,12 @@ const ApplicationManagement = () => {
         if (error.response) {
           console.error("Error response:", error.response.data);
           setError(
-            "Failed to fetch data from the server. Please try again later."
+            "Failed to fetch data from the server. Please try again later.",
           );
         } else if (error.request) {
           console.error("Error request:", error.request);
           setError(
-            "No response from the server. Please check your connection."
+            "No response from the server. Please check your connection.",
           );
         } else {
           console.error("Error message:", error.message);

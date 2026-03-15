@@ -6,19 +6,12 @@ const { validateUserRegister, validateUserLogin } = require("../validate/auth");
 const { runValidation } = require("../validate");
 const { isLoggedIn } = require("../middlewares/auth");
 
-router.post(
-  "/profile",
-  validateUserRegister,
-  runValidation,
-  userController.register
-);
-
 router.get("/get_users", userController.getUsers);
 router.post(
-  "/add_user",
+  "/sign_up",
   validateUserRegister,
   runValidation,
-  userController.addUser
+  userController.signUp,
 );
 router.put("/update_user/:id", userController.updateUser);
 router.delete("/delete_user/:id", userController.deleteUser);

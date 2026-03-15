@@ -23,10 +23,10 @@ export const fetchSlider = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response ? error.response.data : "An unexpected error occurred"
+        error.response ? error.response.data : "An unexpected error occurred",
       );
     }
-  }
+  },
 );
 
 export const addSlider = createAsyncThunk(
@@ -43,7 +43,7 @@ export const addSlider = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
-  }
+  },
 );
 
 export const updateSlider = createAsyncThunk(
@@ -58,10 +58,10 @@ export const updateSlider = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response ? error.response.data : "An unexpected error occurred"
+        error.response ? error.response.data : "An unexpected error occurred",
       );
     }
-  }
+  },
 );
 
 export const deleteSlider = createAsyncThunk(
@@ -75,10 +75,10 @@ export const deleteSlider = createAsyncThunk(
       return id;
     } catch (error) {
       return rejectWithValue(
-        error.response ? error.response.data : "An unexpected error occurred"
+        error.response ? error.response.data : "An unexpected error occurred",
       );
     }
-  }
+  },
 );
 
 const sliderSlice = createSlice({
@@ -103,7 +103,7 @@ const sliderSlice = createSlice({
       })
       .addCase(updateSlider.fulfilled, (state, action) => {
         const index = state.users.findIndex(
-          (user) => user._id === action.payload._id
+          (user) => user._id === action.payload._id,
         );
         if (index !== -1) {
           state.users[index] = action.payload;

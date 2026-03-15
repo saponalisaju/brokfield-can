@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home1.css";
 import "../../assets/styles/main.css";
-import api from "../../pages/applications/api";
+import api from "../../pages/api";
 
 const Component1 = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const Component1 = () => {
       setLoading(true);
       setError("");
       try {
-        const response = await api.get("/fetchApplicationEnquiry", {
+        const response = await api.get("/application/fetchApplicationEnquiry", {
           params: { search, search1, search2 },
         });
         setApplications(response.data.applications || []);

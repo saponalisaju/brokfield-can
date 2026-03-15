@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import "./auth.css";
 import apiUrl from "../secret";
@@ -116,6 +116,8 @@ const Login = () => {
           <button className="btn btn-primary" type="submit" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>
+          <span className="ps-4">Don't have an account?</span>
+          <Link to="/sign_up"> Sign Up</Link>
         </form>
         {/* <div className="fs-6 text-center text-muted">
           Admin not registered ?
