@@ -1,22 +1,13 @@
 /**eslint-disable */
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import apiUrl from "../../secret";
-
-const api = axios.create({
-  baseURL: `${apiUrl}/api/slider`,
-  headers: {
-    "Content-Type": "application/json",
-  },
-  withCredentials: true,
-});
+import api from "../api";
 
 export const fetchSlider = createAsyncThunk(
   "users/fetchSlider",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get("/fetchSlider");
+      const response = await api.get("/slider/fetchSlider");
       if (response.status === 404) {
         return rejectWithValue("Resource not found");
       }
@@ -33,11 +24,10 @@ export const addSlider = createAsyncThunk(
   "users/addSlider",
   async (newUser, { rejectWithValue }) => {
     try {
-      const response = await api.post("/addSlider", newUser, {
+      const response = await api.post("/slider/addSlider", newUser, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        timeout: 5000,
       });
       return response.data;
     } catch (error) {
@@ -51,7 +41,7 @@ export const updateSlider = createAsyncThunk(
   async (editDesignation, { rejectWithValue }) => {
     const { _id, ...userData } = editDesignation;
     try {
-      const response = await api.put(`/updateSlider/${_id}`, userData);
+      const response = await api.put(`/slider/updateSlider/${_id}`, userData);
       if (response.status === 404) {
         return rejectWithValue("Resource not found");
       }
@@ -68,7 +58,7 @@ export const deleteSlider = createAsyncThunk(
   "users/deleteSlider",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await api.delete(`/deleteSlider/${id}`);
+      const response = await api.delete(`/slider/deleteSlider/${id}`);
       if (response.status === 404) {
         return rejectWithValue("Resource not found");
       }

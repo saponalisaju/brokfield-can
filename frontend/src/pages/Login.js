@@ -1,9 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import "./auth.css";
-import apiUrl from "../secret";
+import api from "./api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,10 +33,7 @@ const Login = () => {
     setError("");
     const formData = { email, password };
     try {
-      const response = await axios.post(`${apiUrl}/api/users/login`, formData, {
-        headers: { "Content-Type": "application/json" },
-        timeout: 15000,
-      });
+      const response = await api.post(`/users/login`, formData);
 
       if (response.data.token) {
         console.log("Login successful:", response.data);

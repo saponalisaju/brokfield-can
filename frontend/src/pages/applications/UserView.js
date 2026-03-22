@@ -122,7 +122,9 @@ const UserView = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await api.put(`/updateApplicationApprove/${id}`);
+      const response = await api.put(
+        `/application/updateApplicationApprove/${id}`,
+      );
       if (response?.status === 200) {
         navigate("/userView", { replace: true });
       } else {
@@ -146,7 +148,9 @@ const UserView = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await api.put(`/updateApplicationPending/${id}`);
+      const response = await api.put(
+        `/application/updateApplicationPending/${id}`,
+      );
       if (response?.status === 200) {
         navigate("/userView", { replace: true });
       } else {
@@ -170,7 +174,9 @@ const UserView = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await api.put(`/updateApplicationReject/${id}`);
+      const response = await api.put(
+        `/application/updateApplicationReject/${id}`,
+      );
       if (response?.status === 200) {
         navigate("/userView", { replace: true });
       } else {

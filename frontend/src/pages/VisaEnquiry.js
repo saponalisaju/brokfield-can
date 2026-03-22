@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./auth.css";
 import enq from "../assets/images/logo.png";
-import api from "./applications/api";
+import api from "./api";
 
 const VisaEnquiry = () => {
   const [applications, setApplications] = useState([]);
@@ -20,7 +20,7 @@ const VisaEnquiry = () => {
       setLoading(true);
       setError("");
       try {
-        const response = await api.get(`/fetchApplicationEnquiry`, {
+        const response = await api.get(`/application/fetchApplicationEnquiry`, {
           params: { passport: passport, dob: dob, currentN: nationality },
         });
         setApplications(response.data.applications);
